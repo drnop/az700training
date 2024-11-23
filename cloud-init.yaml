@@ -1,0 +1,25 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - apache2
+
+runcmd:
+  - systemctl enable apache2
+  - systemctl start apache2
+
+# Modify the default Apache homepage
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <html>
+        <head><title>Apache Server</title></head>
+        <body>
+          <h1>Hello</h1>
+        </body>
+      </html>
+    owner: root:root
+    permissions: '0644'
+    
+# Ensure Apache runs on boot
+final_message: "Apache installation complete and server running!"

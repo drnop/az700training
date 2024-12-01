@@ -112,11 +112,19 @@ By default access access to FMC is closed. In Azure portal, find the NSG and mod
 
 Find the FMC public IP and point your web browser to it with https://. Turn on evaluation licensing.
 
-![Find FMC public IP.](pngs/fmcpip)
+![Find FMC public IP.](pngs/fmcpip.png)
 
-![Turn on Eval license](pngs/fmclicense)
+![Turn on Eval license](pngs/fmclicense.png)
 
-9. 
+9. **Add a user to FMC to allow for API access**
+
+We will use REST APIs to configure FMC.
+
+Add an API user by navigating to users menu. Ensure you note down the username and pasword and give the user the Administrator Role.
+
+![Add API user/](pngs/fmcapiuser.png)
+
+10. 
 
 
 

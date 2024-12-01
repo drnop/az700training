@@ -122,7 +122,7 @@ We will use REST APIs to configure FMC.
 
 Add an API user by navigating to users menu. Ensure you note down the username and pasword and give the user the Administrator Role.
 
-![Add API user/](pngs/fmcapiuser.png)
+![Add API user](pngs/fmcapiuser.png)
 
 10. **Access the Scripting host**
 
@@ -138,6 +138,41 @@ This could be any system with python3 installed. If your PC fulfills the require
     "password":"xxxxxxxx"}
 
 12. **Download cats.py setupfmc.py to the Scripting host**
+
+   curl -O https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/cats.py
+   (cats.py is a demo python library that can be used to access some Cisco Security Solutions(
+
+   curl -O https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/setupfmc.py
+   (setupfmc.py is the script that will setup FMC initial configuration(.
+
+   The current directory on the Scripting Host should now how 3 files
+   
+   creds.json
+   cats.py
+   setupfmc.py
+   
+13. **Run the setupfmc.py script**
+
+   On the scripting host:
+
+   python3 setupfmc.py
+
+   The script with output the configuration changes.
+
+15. **Examine FMC the created configurations in FMC**
+
+   The script will create
+   
+   a device group called AutoScaleDeviceGroup (where we could later add devices that are autoscaled).
+   security zone OutsideZopne, used for the outside interface
+   security zone VNIzone, used for VNI interfaces
+   Access Poliy MyAccessPoliy with an access rule permitting and logging all traffic between VNIzone and VNIzone. This policy is for testing only, once topology is working we could restrict access, add IPS etc.
+   ![Access Policy with rule that allows but logs traffic to/from VNIzone](/pngs/fmcaccesspolicy.png(
+   
+   Platform Settings Platform Policy that allows HTTP access on port 9443 from IP 168.63.129.16. This is to allow from health probes from Azure that will verify that the FTD is up and running. 
+   ![Platform Settings policy that allows HTTPS access on 9443 from the IP used by Azure Health Probe](pngs/fmcplatformhttpaccess.png)
+   
+
 
     
 

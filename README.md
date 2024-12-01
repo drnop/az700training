@@ -203,7 +203,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Again we have two separate credentials, VM access and admin access to FTDv CLI.
 
-   ![FTDv creation 1](pngs/ftdvcreate1)
+   ![FTDv creation 1](pngs/ftdvcreate1.pgn)
    
    3. **Specify FMC registration parameters**
 
@@ -213,7 +213,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    We will not use a cluster in this lab.
 
-    ![FTDv creation 1](pngs/ftdvcreate1)
+    ![FTDv creation 1](pngs/ftdvcreate2.png)
     
    5. 
     

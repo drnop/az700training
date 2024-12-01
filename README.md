@@ -189,13 +189,13 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Before adding an FTD (manually), lets remember the topology of FWVNET.
 
-   ![FWVNET topoloy](pngs/FWVNETtopology.png)
+   ![FWVNET topoloy](pngs/FWNETtopology.png)
 
    We have 3 subnets: ManagementSubnet (172.16.0.0/24), outside (172.16.1.0/24) and inside (127.16.2.0/24). Note that the inside subnets is not really used for traffic in this design, but it is still there in the template.
 
    1. **Find Cisco Firepower Threat Defense Virtual in the Marketplace and click create**
 
-   ![FTDv in Marketplace](pngs/FTDvMarketplace.png)
+   ![FTDv in Marketplace](pngs/FTDvmarketplace.png)
    
    2. **Specify Resource Group, Region and Credentials**
 
@@ -203,7 +203,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Again we have two separate credentials, VM access and admin access to FTDv CLI.
 
-   ![FTDv creation 1](pngs/ftdvcreate1.pgn)
+   ![FTDv creation 1](pngs/ftdvcreate1.png)
    
    3. **Specify FMC registration parameters**
 
@@ -216,7 +216,74 @@ Note: It is possible to access FMC directly and make the configuration changes s
    ![FTDv creation 1](pngs/ftdvcreate2.png)
     
     
-   5. 
+   5. **Specify VNETs and subnets**
+
+   Do not change the size of FTDv to something more expensive and energy-consuming.
+
+   Be careful to specify the correct VNET (FWVNET) and subnets (ManagementSubnet, outside, inside) for respective interface.
+
+   ![FTDv creation 1](pngs/ftdvcreate3.png)
+
+   Note that we don't really need a public IP for the FTDv since we are using registration via the template, but could be good for troubleshooting.
+   
+   6. **Deploy the FTDv to Azure**
+
+   This may take some time. Spend the time wiselyl (coffee or smoke) or go ahead and read through the instructions for the next section.
+
+   ## Configuring FTDv in FMC
+
+   Before starting the configuration of our new FTDv, examine the Gateway Load Balancer (GWLB) configuraiton in the Azure Portal.
+
+   ![GWLB frontend configuration](pngs/gwlb-frontend.png).
+
+   Note that it is configured with a static frontend IP address 172.16.1.200. This is on the outside subnet/interface of the FTD. We willneed this IP address when we create the VXLAN peering.
+   Feel free to check the health probe and backend pool (empty).
+   All this was configured by the initial bash script.
+
+   1-7. **Scripted Version**
+
+   The proctor may provide as script performing the steps below automatically using a python script.
+
+   1. **Register FTDv to the FMC**
+
+   Register the FTDv to the FMC. You will need to know its IP address on the ManagementSubnet 172.16.0.0/24 (check in Azure portal). You will also need the registration key you specified previously in Azure portal.
+
+   ![FTDv Registration](pngs/ftdvregistration.png)
+
+   After some time FMC should show that the FTDv is registering and within minutes you can configure it in FMC.
+
+   2. **Assign the Platform Settings Policy**
+
+   We previously configured a platform settings policy (allowing health probes from Azure) that we need to assign to the FTD.
+
+   ![FTDv Platform Policy Assignment](pngs/ftdplatform.png)
+   
+   3. **Configure the outside interface on FTDv**
+
+   Configure the outside interface (gigabit 0/0) on the FTD.  Check the IP address in the Azure portal If this is the first device on this subnet, the IP should be 172.16.1.4.
+
+   ![FTDv Interface Outside](pngs/ftdvinterface.png)
+   
+   4. **Configure static routing on FTDv**
+
+   FTD needs a route to respond to Azure Health Probe. The destination would be 168.63.129.16/32 and the next hop the Azure default gateway of the outside interface (172.16.1.1).
+   Note that the FTD does not need any other routes like the default, since all data traffic will enter on VNI interfaces over VXLAN.
+
+   ![FTDv Static Routes](pngs/ftdvroute.png)
+      
+   5. **Enable VTEP**
+
+   For VXLAN we need to specify a VTEP interface and VTEP peer. The peer should be the front-end IP of the GWLB on the outside interface (172.16.1.200).
+
+   ![FTDv VTEP](pngs/ftdvVTEP.png(
+   
+   6. 
+   
+
+   
+
+   
+   
     
 
     

@@ -164,12 +164,17 @@ This could be any system with python3 installed. If your PC fulfills the require
    The script will create
    
    a device group called AutoScaleDeviceGroup (where we could later add devices that are autoscaled).
+   
    security zone OutsideZopne, used for the outside interface
+   
    security zone VNIzone, used for VNI interfaces
+   
    Access Poliy MyAccessPoliy with an access rule permitting and logging all traffic between VNIzone and VNIzone. This policy is for testing only, once topology is working we could restrict access, add IPS etc.
-   ![Access Policy with rule that allows but logs traffic to/from VNIzone](/pngs/fmcaccesspolicy.png(
+   
+   ![Access Policy with rule that allows but logs traffic to/from VNIzone](pngs/fmcaccesspolicy.png)
    
    Platform Settings Platform Policy that allows HTTP access on port 9443 from IP 168.63.129.16. This is to allow from health probes from Azure that will verify that the FTD is up and running. 
+   
    ![Platform Settings policy that allows HTTPS access on 9443 from the IP used by Azure Health Probe](pngs/fmcplatformhttpaccess.png)
    
 

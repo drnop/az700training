@@ -32,19 +32,28 @@ Find out the public IPv4 address that you use when connecting to the internet, f
 
    ![Cloud shell (bash).](pngs/cloudshell.png)
    
-4. **In cloudshell
-   curl github.com/drnop/az700training/blob/main/azure-ngfw-gwlb-prep.sh
-   to download the setup file.**
+4. **In cloudshell, use wget to retrieve the setupscript.**
 
-5. **In cloudshell execute the script file with bash azure-ngfw-gwlb-prep.sh
-   This should prompt you for your unique Azure Resource Group, your public IP address and the passwords used to create the VMs.**
+   wget raw.githubusercontent.com/drnop/az700training/refs/heads/main/azure-ngfw-gwlb-prep.sh
+   
+
+6. **In cloudshell execute the script file**
+
+   bash azure-ngfw-gwlb-prep.sh
+   
+   This should prompt you for your unique Azure Resource Group, your public IP address and the passwords used to create the VMs.
 
    (The passwords for the VMs are required at creation, but typically you would not need to use the passwords to login to the VMs).
 
-6. **The setup will take a couple of minutes. Rest!**
+8. **The setup will take a couple of minutes. Rest!**
 
-7. **When the setup script has completed, inspect the resources created in the Azure Portal.**
+9. **When the setup script has completed, inspect the resources created in the Azure Portal.**
 
-   
+VNET SERVERNET with a default subnet has been created
+Public Load Balancer PLB has been created
+VM1 and VM2 have been created.
+A public IP named PublicIP has been created, what is the value of the IP address?
+
+![Resources created by script.](pngs/scriptresources.png)
    
 

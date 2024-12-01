@@ -20,3 +20,17 @@ All resources shown in azure should be  created in the student's Azure resource 
 * FWVNET where we will define the Gateway Load Balancer (GWLB) that will load balance traffic over the firewalls that will add services such as access rules with IPS, Anti-Malware, Reputation filtering and more.
 
 The student accesses all the lab with an internet routable internet (student public IP).
+
+## Initial Setup using Cloudshell with bash script
+
+Take note of the Azure Resource Group that is allocated by the lab proctor, the resource group must be unique in the lab environment subscription.
+
+Find out the public IPv4 address that you use when connecting to the internet, for example using a site such as [What is My IP](https://www.whatismyip.com/).
+
+1. **Login to the Azure Portal.**
+2. **Open a Cloudshell with Bash.**
+
+   ![Cloud shell (bash).](pngs/cloudshell.png)
+   
+4. 
+

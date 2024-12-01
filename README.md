@@ -55,5 +55,14 @@ VM1 and VM2 have been created.
 A public IP named PublicIP has been created, what is the value of the IP address?
 
 ![Resources created by script.](pngs/scriptresources.png)
+
+10. **Test that you can access the public IP with your browser using http**
+
+Note: HTTPS has not been setup on the server, so ensure you use HTTP.
+
+Note: Access to the server has been restricted by an NSG to only allow your public IP entered in the setup script.
+
+![Our fantastic web application.](pngs/hello.png)
+
    
 

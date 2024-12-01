@@ -474,8 +474,6 @@ class FMC(CATS):
     def getAccessPolicyUUID(self,policyName):
         rsp = self.fmcget(api="/policy/accesspolicies")
         items = rsp["items"]
-        print(policyName)
-        print(json.dumps(rsp,indent=4,sort_keys=True))
         policyUUID = 0
         for i in items:
             if i["name"] == policyName:
@@ -517,7 +515,6 @@ class FMC(CATS):
             },
   
         })
-        print(policyUUID)
         rsp = self.fmcpost(api="/policy/accesspolicies/{}/accessrules".format(policyUUID),post_data=postdata)
 
     def getAccessPolicies(self):

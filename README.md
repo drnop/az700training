@@ -124,7 +124,22 @@ Add an API user by navigating to users menu. Ensure you note down the username a
 
 ![Add API user/](pngs/fmcapiuser.png)
 
-10. 
+10. **Access the Scripting host**
+
+This could be any system with python3 installed. If your PC fulfills the requirements you can use it. Otherwise, ask the proctor for access to a machine.
+
+11. **Prepare the creds.json file**
+
+    The script reads a file creds.json which constains information to access the FMC via the API.
+    Create a file with the following format called creds.json, but modify the IP of the FMC and the credentials to suit your environment.
+
+    {"ip":"my ip address",
+    "username":"apiuser",
+    "password":"xxxxxxxx"}
+
+12. ""Download cats.py setupfmc.py to the Scripting host**
+
+    
 
 
 

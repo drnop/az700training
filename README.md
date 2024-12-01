@@ -7,9 +7,11 @@ This lab shows how to use service chaining with an Azure Gateway Load balancer i
 You will need access to an azure subscription and the rights to create necessary objects in a resource group.
 
 Prerequisite knowledge includes
-* some understanding of Azure Networking (VNETs, subnets, routing, load balancers...)
+* some understanding of Azure Networking (VNETs, subnets, routing, load balancers, NSGs...)
+* some understanding of VXLAN
 * some understanding of Cisco Secure Firewall (FTD) managed  by Cisco Firepower Management Center (FMC)
 * some understanding of Azure CLI
+
 
 The topology is shown in figure below.
 
@@ -126,7 +128,10 @@ Add an API user by navigating to users menu. Ensure you note down the username a
 
 10. **Access the Scripting host**
 
-This could be any system with python3 installed. If your PC fulfills the requirements you can use it. Otherwise, ask the proctor for access to a machine.
+There are many options for automating the inital FMC configuraiton (terraform etc). We will however use python, for purely nostalgic reasons.
+The scripting host could be any system with python3 installed. If your PC fulfills the requirements you can use it. Otherwise, ask the proctor for access to a machine.
+
+Note: It is possible to access FMC directly and make the configuration changes specified below in the Web GUI if you prefer. 
 
 11. **Prepare the creds.json file**
 
@@ -177,8 +182,40 @@ This could be any system with python3 installed. If your PC fulfills the require
    
    ![Platform Settings policy that allows HTTPS access on 9443 from the IP used by Azure Health Probe](pngs/fmcplatformhttpaccess.png)
    
+   ## Adding an FTDv from Marketplace to FWVNET 
 
+   Note that all the steps in this section would typically be fully automated and maybe initiated by autoscaling a scaleset. There are Azure Functions and Logic Apps available to achieve this
+   as documented in the References.
 
+   Before adding an FTD (manually), lets remember the topology of FWVNET.
+
+   ![FWVNET topoloy](FWVNETtopology)
+
+   We have 3 subnets: ManagementSubnet (172.16.0.0/24), outside (172.16.1.0/24) and inside (127.16.2.0/24). Note that the inside subnets is not really used for traffic in this design, but it is still there in the template.
+
+   1. **Find Cisco Firepower Threat Defense Virtual in the Marketplace and click create**
+
+   ![FTDv in Marketplace](pngs/FTDvMarketplace(
+   
+   2. **Specify Resource Group, Region and Credentials**
+
+   Ensure you choose the Resource Group and Region used in this lab.
+
+   Again we have two separate credentials, VM access and admin access to FTDv CLI.
+
+   ![FTDv creation 1](pngs/ftdvcreate1)
+   
+   3. **Specify FMC registration parameters**
+
+   The template lets us specify FMC registration parameters (so we don't really need console access to the FTD!)
+
+   You need to check the IP of FMC from Azure Portal - since it is the first created machine on ManagementSubnet it should be 172.16.0.4.
+
+   We will not use a cluster in this lab.
+
+    ![FTDv creation 1](pngs/ftdvcreate1)
+    
+   5. 
     
 
     

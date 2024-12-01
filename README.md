@@ -137,7 +137,9 @@ This could be any system with python3 installed. If your PC fulfills the require
     "username":"apiuser",
     "password":"xxxxxxxx"}
 
-12. ""Download cats.py setupfmc.py to the Scripting host**
+12. **Download cats.py setupfmc.py to the Scripting host**
+
+    
 
     
 

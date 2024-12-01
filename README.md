@@ -314,7 +314,33 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Note: You may here get a cryptic error message from Azure Portal after Save. If so pick another public IP from the dropdown, then change back to the old PublicIP and press save.
    
+   4. **Test the Connection from your Web Browser**
 
+   Verify in FMC connection logs that traffic is now going through the FTD.
+
+   ![FMC Connection Logs](pngs/fmcconnections.png)
+
+   ## Troubleshooting
+
+   In the unlikely event of you needing to troubleshoot, it is worth looking at 
+
+   FMC Connection logs
+   Packet Capture on FTD
+
+   A typical packet capture on FTD would show Health Probes to FTD from the GWLB (sourced from 168.63.129.16) and the resonses as well as VXLAN encapsulated packets.
+
+   ![FMC Troubleshoot](pngs/fmctroubleshoot.png)
+
+   ## References
+
+   Great youtube videos by Eric Kostlan:
+
+   General Azure videos by John Savill:
+
+   Cisco Configurations:
+   
+
+   
    
    
     

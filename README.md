@@ -277,9 +277,42 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    ![FTDv VTEP](pngs/ftdvVTEP.png)
    
-   6. 
-   
+   6. **Add VNI**
 
+   Add the VNI. Note that the Internal and External port numbers must much the configuration of the Azure GWLB load balancing rule (which we will configure in the next section).
+
+   ![FTDv VNI](pngs/ftdvVNI.png)
+   
+   7. **Deploy the Configuration**
+   
+   There will be a cosmetic warning message so you have to select Ignore warnings.
+
+   ## Finalising the Load Balancing Configurations in Azure Portall and Testing the Configuration
+
+   Going back to the Azure Portal and the GWLB (Gateway Load Balancer) we need to create a load balancing configuration.
+
+   1. **Modify the Backend Pool in the Gateway Load Balancer GWLB**
+
+   Go to the GWLB object and modify its backend pool FWpool. 
+   Select to specify IP address (not NIC).
+   Select Internal and External and ensure the port numbers are the same as configured on the FTD.
+   Select the IP address of the FTDv on the outside (172.16.1.0/24) subnet, should be 172.16.1.4 if it was the first device created on that subnet.
+
+   ![GWLB Backend pool configuration](pngs/GWLBbackendpool.png)
+
+   2. **Create a Load Balancer Rule in the Gateway Load Balancer GWLB**
+
+   Specify the frontend (172.16.1.200) and the configured backend pool.
+   
+   ![GWLB Load Balancing Rule](pngs/GWLBlbrule.png)
+   
+   3. **Make the Public Load Balancer (PLB) point to the GWLB**
+
+   As a final configuraiton step, make the Public Load Balancer we created in the beginning point to the GWLB, thus creating a service chain with Cisco Secure Firewall Inserted.
+
+   ![Public Load Balancer reconfiguration](pngs/PLBchain.png)
+
+   Note: You may here get a cryptic error message from Azure Portal after Save. If so pick another public IP from the dropdown, then change back to the old PublicIP and press save.
    
 
    

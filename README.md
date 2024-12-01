@@ -64,5 +64,6 @@ Note: Access to the server has been restricted by an NSG to only allow your publ
 
 ![Our fantastic web application.](pngs/hello.png)
 
-   
+We now have create a fantastic web application which is load balanced with a public load balancer. Our mission now is to insert Cisco Secure Firewall to secure this environment. We will do so without changing the topology in this VNET and in a way which supports autoscaling.
+
 

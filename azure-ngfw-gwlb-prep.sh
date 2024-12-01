@@ -5,7 +5,16 @@ echo "Please enter your Azure Resource Group:"
 read rg
 echo "Please enter the public IP from which you are accessing lab:"
 read myip
-echo "Your resource group is $rg and you public ip is $myip."
+echo "Plase enter the password for the VMs (need to follow password complexity rules for Azure passwords for VMs):"
+read -sp "Enter password: " password
+read -sp "Re-enter password: " confirm_password
+
+if [[ "$password" != "$confirm_password" ]]; then
+  echo "Passwords do not match. Exiting..."
+  exit 1
+fi
+vmpassword=$password
+echo "Your resource group is $rg and you public ip is $myip and your password is $vmpassword"
 read -p "Do you want to continue? (y/n): " answer
 
 if [[ "$answer" != "y" ]]; then
@@ -13,7 +22,7 @@ if [[ "$answer" != "y" ]]; then
     exit 1
 fi
 
-vmpassword="@zureC1sco1!"
+#vmpassword="@zureC1sco1!"
 vmadmin="vmadmin"
 vnetname="SERVERVNET"
 vnetprefix="10.0.0.0/16"

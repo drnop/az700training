@@ -32,5 +32,19 @@ Find out the public IPv4 address that you use when connecting to the internet, f
 
    ![Cloud shell (bash).](pngs/cloudshell.png)
    
-4. 
+4. **In cloudshell
+   curl github.com/drnop/az700training/blob/main/azure-ngfw-gwlb-prep.sh
+   to download the setup file.**
+
+5. **In cloudshell execute the script file with bash azure-ngfw-gwlb-prep.sh
+   This should prompt you for your unique Azure Resource Group, your public IP address and the passwords used to create the VMs.**
+
+   (The passwords for the VMs are required at creation, but typically you would not need to use the passwords to login to the VMs).
+
+6. **The setup will take a couple of minutes. Rest!**
+
+7. **When the setup script has completed, inspect the resources created in the Azure Portal.**
+
+   
+   
 

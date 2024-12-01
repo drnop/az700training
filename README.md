@@ -74,6 +74,51 @@ We will now add Cisco Secure Firewalls. This is done in a separate VNET, FWVNET,
 
 The topology of FWVNET is shown in picture below. We have a Gateway Load Balancer - more about that later- and also subnets ManagementSubnet and outside. We will add FMC to the ManagementSubnet. The FTDs will have one interface in the ManagementSubnet (for management by FMC) and the data interface GigabitEthernet0/0 will be in the outside subnet. The script has also created an inside subnet but that will not be needed because the design is based on VXLAN, allowing all traffic to enter via the outside interface.
 
-![FWVNET topology.][pngs/FWNETtopology.png)
+![FWVNET topology.](pngs/FWNETtopology.png)
+
+1. **Find Cisco Firepower Management Center 300 in the Marketplace and click create**
+
+![FMCv in Marketplace](pngs/FMCvMarketplace.png)
+
+2. **FMC Resource Group, Region and Credentials**
+
+![FMC resource groups, region and credentials.](pngs/fmccreate1.png)
+
+Important: Use your Resource Group and Region where you created your previous resources.
+
+Note that you have two sets of admin credentials, one for accessing the FMC VM and one for accessing the FMC web GUI. 
+For NTP you can give pool.ntp.org or any valid public NTP server.
+
+Important: You will need the FMC web GUI credentials later!
+
+
+4. **FMC VNET and subnet**
+
+![FMC VNET and subnet.](pngs/fmccreate2.png)
+
+Important: Use the FWVNET and the ManagementSubnet.
+
+5. **Create the FMC**
+
+This will take some time. A good time for coffee or a smoke. Or for learning how to smoke if you don't already.
+
+6. **Modify NSG attached to FMC interface to allow inbound access from your public IP**
+
+By default access access to FMC is closed. In Azure portal, find the NSG and modify the incoming rules so you can access the FMC via HTTPS form your PC.
+
+![FMC modification of NSG to allow for HTTPS from your poublic IP](pngs/fmcnsg.png)
+
+7. **Access the FMC via the Web GUI and turn on evaluation license**
+
+Find the FMC public IP and point your web browser to it with https://. Turn on evaluation licensing.
+
+![Find FMC public IP.](pngs/fmcpip)
+
+![Turn on Eval license](pngs/fmclicense)
+
+9. 
+
+
+
 
 

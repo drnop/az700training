@@ -189,13 +189,13 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Before adding an FTD (manually), lets remember the topology of FWVNET.
 
-   ![FWVNET topoloy](FWVNETtopology)
+   ![FWVNET topoloy](pngs/FWVNETtopology.png)
 
    We have 3 subnets: ManagementSubnet (172.16.0.0/24), outside (172.16.1.0/24) and inside (127.16.2.0/24). Note that the inside subnets is not really used for traffic in this design, but it is still there in the template.
 
    1. **Find Cisco Firepower Threat Defense Virtual in the Marketplace and click create**
 
-   ![FTDv in Marketplace](pngs/FTDvMarketplace(
+   ![FTDv in Marketplace](pngs/FTDvMarketplace.png)
    
    2. **Specify Resource Group, Region and Credentials**
 
@@ -213,7 +213,8 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    We will not use a cluster in this lab.
 
-    ![FTDv creation 1](pngs/ftdvcreate2.png)
+   ![FTDv creation 1](pngs/ftdvcreate2.png)
+    
     
    5. 
     

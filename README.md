@@ -256,7 +256,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    We previously configured a platform settings policy (allowing health probes from Azure) that we need to assign to the FTD.
 
-   ![FTDv Platform Policy Assignment](pngs/ftdplatform.png)
+   ![FTDv Platform Policy Assignment](pngs/ftdvplatform.png)
    
    3. **Configure the outside interface on FTDv**
 
@@ -275,7 +275,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    For VXLAN we need to specify a VTEP interface and VTEP peer. The peer should be the front-end IP of the GWLB on the outside interface (172.16.1.200).
 
-   ![FTDv VTEP](pngs/ftdvVTEP.png(
+   ![FTDv VTEP](pngs/ftdvVTEP.png)
    
    6. 
    

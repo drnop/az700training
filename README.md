@@ -329,7 +329,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    A typical packet capture on FTD would show Health Probes to FTD from the GWLB (sourced from 168.63.129.16) and the resonses as well as VXLAN encapsulated packets.
 
-   ![FMC Troubleshoot](pngs/fmctroubleshoot.png)
+   ![FMC Troubleshoot](pngs/FMCtroubleshoot.png)
 
    ## References
 

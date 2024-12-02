@@ -329,13 +329,14 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    A typical packet capture on FTD would show Health Probes to FTD from the GWLB (sourced from 168.63.129.16) and the resonses as well as VXLAN encapsulated packets.
 
-   Below packet trace taken from FMC GUI showing healthprobes in both directions
+   Below packet trace on outside interface showing healthprobes in both directions (on port 9443)
 
    ![FMC Troubleshooting Health Probe](/pngs/tracehealthprobe.png)
 
-   Below packet trace on the VNI interface
+   Below packet trace on the outside interface showing VNI encapsulated packets (UDP 10800 and 10801(
+
+   ![FMC Troubleshooting VNI packets](pngs/traceudp.png)
    
-   ![FMC Troubleshoot](pngs/FMCtroubleshoot.png)
 
    ## References
 

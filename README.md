@@ -348,18 +348,24 @@ Note: It is possible to access FMC directly and make the configuration changes s
    Below packet trace on the outside interface showing VNI encapsulated packets (UDP 10800 and 10801(
 
    ![FMC Troubleshooting VNI packets](pngs/traceudp.png)
-   
 
+   ## Conclusion
+
+   Congratulations! This lab showed how to surgically insert security features into an existing deployment, without modifying the existing VNAT or introducing anoying NAT.
+   
    ## References
 
    Great youtube videos by Eric Kostlan:
 
    https://www.youtube.com/watch?v=XRCqBscT7IM
-   
 
    General Azure videos by John Savill:
 
+   https://www.youtube.com/channel/UCpIn7ox7j7bH_OFj7tYouOQ/videos
+
    Cisco Configurations:
+
+   https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/consolidated_ftdv_gsg/threat-defense-virtual-76-gsg/m-ftdv-azure-gsg.html
    
 
    

@@ -51,6 +51,8 @@ Find out the public IPv4 address that you use when connecting to the internet, f
 
 9. **When the setup script has completed, inspect the resources created in the Azure Portal.**
 
+Note: Your resources should have been prefixed with your group name, e.g. P0VM1.
+
 VNET SERVERNET with a default subnet has been created
 Public Load Balancer PLB has been created
 VM1 and VM2 have been created.
@@ -87,6 +89,7 @@ The topology of FWVNET is shown in picture below. We have a Gateway Load Balance
 ![FMC resource groups, region and credentials.](pngs/fmccreate1.png)
 
 Important: Use your Resource Group and Region where you created your previous resources.
+Important: Prefix the name of the FMC with your group name, e.g. "XXfmc".
 
 Note that you have two sets of admin credentials, one for accessing the FMC VM and one for accessing the FMC web GUI. 
 For NTP you can give pool.ntp.org or any valid public NTP server.
@@ -206,6 +209,8 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Ensure you choose the Resource Group and Region used in this lab.
 
+   Important: Prefix the name of the FTD with your group name, e.g: G11FTD if you are G11.
+   
    Again we have two separate credentials, VM access and admin access to FTDv CLI.
 
    ![FTDv creation 1](pngs/ftdvcreate1.png)

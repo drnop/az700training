@@ -108,7 +108,7 @@ Important: Use the FWVNET and the ManagementSubnet.
 
 This will take some time. A good time for coffee or a smoke. Or for learning how to smoke if you don't already.
 
-![Cat smoking and drinking coffee](png/catcoffee.png)
+![Cat smoking and drinking coffee](pngs/catcoffee.png)
 
 6. **Modify NSG attached to FMC interface to allow inbound access from your public IP**
 

@@ -130,7 +130,9 @@ Add an API user by navigating to users menu. Ensure you note down the username a
 10. **Access the Scripting host**
 
 There are many options for automating the inital FMC configuraiton (terraform etc). We will however use python, for purely nostalgic reasons.
-The scripting host could be any system with python3 installed. If your PC fulfills the requirements you can use it. Otherwise, ask the proctor for access to a machine.
+The scripting host could be any system with python3 installed. If your PC fulfills the requirements you can use it. 
+
+Otherwise there is an Ubuntu machine with python installed in FWVNET which you can reach via its public IP and username: vmadmin / <password>.
 
 Note: It is possible to access FMC directly and make the configuration changes specified below in the Web GUI if you prefer. 
 

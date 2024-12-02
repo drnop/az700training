@@ -35,8 +35,9 @@ vm2="VM2"
 PublicIPname="PublicIP"
 PublicLB="PublicLB"
 
-echo "get the cloud-init.yaml"
+echo "get the cloud-init.yaml and cloud-init scripter yamls"
 wget https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/cloud-init.yaml
+wget https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/cloud-init-scripter.yaml
 
 echo "creating resource group"
 az group create -n $rg -l $region
@@ -259,7 +260,21 @@ az network lb probe create \
  --protocol tcp \
  --port 9443 
 
+echo "creating SCRIPTER"
+az vm create \
+  --resource-group $rg \
+  --name "SCRIPTER"\
+  --image Ubuntu2204 \
+  --size Standard_B1s \
+  --admin-username $vmadmin \
+  --admin-password $vmpassword \
+  --vnet-name $fwvnet \
+  --subnet $fwmgmtsubnet \
+  --nsg $nsg \
+  --private-ip-address="172.16.0.100"
+  --custom-data @cloud-init-scripter.yaml 
 exit
+
 
 #echo "create GWLB lb rule MANUALLY instead!
 #az network lb rule create \

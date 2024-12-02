@@ -167,6 +167,8 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    The script with output the configuration changes.
 
+   ![Python Setup script](pngs/setupfmc.png)
+
 15. **Examine FMC the created configurations in FMC**
 
    The script will create

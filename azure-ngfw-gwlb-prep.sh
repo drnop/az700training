@@ -24,16 +24,16 @@ fi
 
 #vmpassword="@zureC1sco1!"
 vmadmin="vmadmin"
-vnetname="SERVERVNET"
+vnetname="${rg}SERVERVNET"
 vnetprefix="10.0.0.0/16"
-subnetname="default"
+subnetname="${rg}default"
 subnetprefix="10.0.0.0/24"
 region="swedencentral"
-nsg="myNSG"
-vm1="VM1"
-vm2="VM2"
-PublicIPname="PublicIP"
-PublicLB="PublicLB"
+nsg="${rg}myNSG"
+vm1="${rg}VM1"
+vm2="${rg}VM2"
+PublicIPname="${rg}PublicIP"
+PublicLB="${rg}PublicLB"
 
 echo "get the cloud-init.yaml and cloud-init scripter yamls"
 wget https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/cloud-init.yaml
@@ -195,17 +195,19 @@ az network lb rule create \
 #
 # Creating Azure objects for FMC and GWLB
 #
-fwvnet="FWVNET"
+fwvnet="${rg}FWVNET"
 fwvnetprefix="172.16.0.0/16"
-fwmgmtsubnet="ManagementSubnet"
+fwmgmtsubnet="${rg}ManagementSubnet"
 fwmgmtsubnetprefix="172.16.0.0/24"
-fwoutsidename="outside"
+fwoutsidename="${rg}outside"
 fwoutsideprefix="172.16.1.0/24"
-fwinsidename="inside"
+fwinsidename="${rg}inside"
 fwinsideprefix="172.16.2.0/24"
-GWLB="GWLB"
+GWLB="${rg}GWLB"
 frontendip="172.16.1.200"
-frontendname="myFrontEnd"
+frontendname="${rg}myFrontEnd"
+fwpool="${rg}FWpool"
+gwlbhealthprobe="${rg}GWLBhealthprobe"
 
 echo "creating Firewall vnet and subnets"
 az network vnet create \
@@ -250,20 +252,42 @@ az network lb address-pool create \
   --resource-group $rg \
   --lb-name $GWLB \
   --vnet $fwvnet \
-  --name FWpool
+  --name $fwpool
 
 echo "create GWLB health probe"
 az network lb probe create \
  --lb-name $GWLB \
  --resource-group $rg \
- --name GWLBhealthprobe \
+ --name $gwlbhealthprobe \
  --protocol tcp \
  --port 9443 
 
 echo "creating SCRIPTER"
+echo "-----------------"
+nsg="${rg}SCRIPTERnsg"
+echo "creating nsg"
+az network nsg create \
+    --resource-group $rg \
+    --name $nsg \
+    --location $region
+
+echo "creating nsg rules"
+
+
+az network nsg rule create \
+  --resource-group $rg \
+  --nsg-name $nsg \
+  --name AllowSSH \
+  --priority 100 \
+  --direction Inbound \
+  --access Allow \
+  --protocol Tcp \
+  --source-address-prefix $myip \
+  --destination-port-range 22
+
 az vm create \
   --resource-group $rg \
-  --name "SCRIPTER"\
+  --name "${rg}SCRIPTER"\
   --image Ubuntu2204 \
   --size Standard_B1s \
   --admin-username $vmadmin \
@@ -271,20 +295,8 @@ az vm create \
   --vnet-name $fwvnet \
   --subnet $fwmgmtsubnet \
   --nsg $nsg \
-  --private-ip-address="172.16.0.100"
+  --private-ip-address="172.16.0.100" \
   --custom-data @cloud-init-scripter.yaml 
-exit
 
-
-#echo "create GWLB lb rule MANUALLY instead!
-#az network lb rule create \
-# --lb-name $GWLB  \
-# --resource-group $rg \
-# --name fwLBrule \
-# --backend-pool-name FWpool \
-# --protocol All\
-# --probe GWLBhealthprobe \
-# --frontend-port 0\
-# --backend-port 0
 
 

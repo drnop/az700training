@@ -295,7 +295,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Go to the GWLB object and modify its backend pool FWpool. 
    Select to specify IP address (not NIC).
-   Select Internal and External and ensure the port numbers are the same as configured on the FTD.
+   Select Internal and External and _ensure the port numbers and idenetifiers are the same as configured on the FTD_.
    Select the IP address of the FTDv on the outside (172.16.1.0/24) subnet, should be 172.16.1.4 if it was the first device created on that subnet.
 
    ![GWLB Backend pool configuration](pngs/GWLBbackendpool.png)
@@ -341,6 +341,9 @@ Note: It is possible to access FMC directly and make the configuration changes s
    ## References
 
    Great youtube videos by Eric Kostlan:
+
+   https://www.youtube.com/watch?v=XRCqBscT7IM
+   
 
    General Azure videos by John Savill:
 

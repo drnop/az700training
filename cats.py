@@ -608,7 +608,7 @@ class FMC(CATS):
                     "type":"FTDPlatformSettingsPolicy"})
         rsp = self.fmcpost(api="/policy/ftdplatformsettingspolicies",post_data=postdata)
     
-    def createPlatformHTTPsetting(self,platformPolicy,zone,networkobject,port=8443):
+    def createPlatformHTTPsetting(self,platformPolicy,zone,networkobject,port=9443):
         rsp = self.getPlatformPolicies()
         items = rsp["items"]
         platformUUID = 0
@@ -620,7 +620,7 @@ class FMC(CATS):
         postdata = json.dumps({
         "id": platformUUID,
         "enableHttpServer": True,
-        "port": 8443,
+        "port": port,
         "httpConfiguration": [
         {
             "ipAddress": {

@@ -351,7 +351,8 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    ## Conclusion
 
-   Congratulations! This lab showed how to surgically insert security features into an existing deployment, without modifying the existing VNAT or introducing anoying NAT.
+   Congratulations! This lab showed how to surgically insert security features into an existing deployment, without modifying the existing VNET or introducing anoying NAT.
+   In the next lab we add auto-scaling using Azure Functions!
    
    ## References
 

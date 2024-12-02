@@ -93,6 +93,7 @@ For NTP you can give pool.ntp.org or any valid public NTP server.
 
 Important: You will need the FMC web GUI credentials later!
 
+Click Next to enter networking details.
 
 4. **FMC VNET and subnet**
 

@@ -144,17 +144,17 @@ Note: It is possible to access FMC directly and make the configuration changes s
     The script reads a file creds.json which constains information to access the FMC via the API.
     Create a file with the following format called creds.json, but modify the IP of the FMC and the credentials to suit your environment.
 
-    {"ip":"my ip address",
+    {"ip":"FMC ip address",
     "username":"apiuser",
     "password":"xxxxxxxx"}
 
 12. **Download cats.py setupfmc.py to the Scripting host**
 
    curl -O https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/cats.py
-   (cats.py is a demo python library that can be used to access some Cisco Security Solutions(
+   (cats.py is a demo python library that can be used to access some Cisco Security Solutions.)
 
    curl -O https://raw.githubusercontent.com/drnop/az700training/refs/heads/main/setupfmc.py
-   (setupfmc.py is the script that will setup FMC initial configuration(.
+   (setupfmc.py is the script that will setup FMC initial configuration.)
 
    The current directory on the Scripting Host should now how 3 files
    

@@ -108,6 +108,8 @@ Important: Use the FWVNET and the ManagementSubnet.
 
 This will take some time. A good time for coffee or a smoke. Or for learning how to smoke if you don't already.
 
+![Cat smoking and drinking coffee](png/catcoffee.png)
+
 6. **Modify NSG attached to FMC interface to allow inbound access from your public IP**
 
 By default access access to FMC is closed. In Azure portal, find the NSG and modify the incoming rules so you can access the FMC via HTTPS form your PC.

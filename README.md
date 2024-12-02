@@ -211,7 +211,7 @@ Note: It is possible to access FMC directly and make the configuration changes s
 
    Ensure you choose the Resource Group and Region used in this lab.
 
-   Important: Prefix the name of the FTD with your group name, e.g: G11FTD if you are G11.
+   Important: Prefix the name of the FTD with your group name, e.g: G11ftdv01 if you are G11.
    
    Again we have two separate credentials, VM access and admin access to FTDv CLI.
 

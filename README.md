@@ -110,7 +110,15 @@ This will take some time. A good time for coffee or a smoke. Or for learning how
 
 ![Cat smoking and drinking coffee](pngs/catcoffee.png)
 
-6. **Modify NSG attached to FMC interface to allow inbound access from your public IP**
+6a. **Modify NSG called xxxNSG to allow inbound access on port 80 from your public IP**
+
+This step is necessary if PODs have been pre-prepared by lab proctor who did not know your public IP beforehand.
+
+6b. **Modify NSG called xxScRIPTERnsg to allow incound access on port 22 from your Public IP**
+
+This step is necessary if PODs have been pre-prepared by lab proctor who did not know your public IP beforehand.
+
+6c. **Modify NSG attached to FMC interface to allow inbound access from your public IP**
 
 By default access access to FMC is closed. In Azure portal, find the NSG and modify the incoming rules so you can access the FMC via HTTPS form your PC.
 
